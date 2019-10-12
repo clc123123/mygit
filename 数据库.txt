@@ -1,0 +1,38 @@
+spring框架 
+
+简化开发 
+封装常见api jdbc之类的
+
+管理对象
+减少依赖
+
+继承其他的框架
+
+-------------------9-30-2019
+现在公司用的springboot分布式框架 + dubbo +zookeeper. 集群, 负载均衡什么的也要晓得.
+
+数据库链接最常用的mybatis, 消息队列RabbitMQ, Redis什么的都是常用的.
+
+ -- 查询所有员工信息，如果员工有部门，则查询部门名称，
+-- 没有部门，则不显示部门名称
+-- SELECT * FROM emp LEFT JOIN dept on emp.dept_id=dept.id
+                 
+-- 子查询：查询里面嵌套查询
+-- 1.查询工资最高员工的信息
+
+-- SELECT * from emp where MAX(salary);
+-- SELECT MAX(salary) from emp
+-- SELECT * FROM emp WHERE emp.salary=(SELECT MAX(salary) from emp)
+-- 查询员工工资小于平均水准
+-- SELECT * FROM emp where salary< AVG(salary) from emp)
+
+-- 查询'财务部'和'市场部'所有的员工信息
+-- SELECT * FROM emp,dept WHERE (dept_id=3 or dept_id=2 ) and emp.dept_id=dept.id
+--  查询员工入职日期是2011-11-11日之后的员工信息和部门信息
+SELECT * FROM dept t1 ,(SELECT * FROM emp WHERE emp.`join_date` > '2011-11-11') t2
+        WHERE t1.id = t2.dept_id;
+
+
+SELECT * FROM emp ,dept where  emp.dept_id=dept.id and emp.join_date>'2011-11-11'
+  -- 普通内连接
+SELECT * FROM emp t1,dept t2 WHERE t1.`dept_id` = t2.`id` AND t1.`join_date` >  '2011-11-11'
