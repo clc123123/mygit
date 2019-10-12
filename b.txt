@@ -1,0 +1,4 @@
+ git add readme.txt
+ git commit -m " 注释"告诉Git
+git status 查看状态
+git push origin master
